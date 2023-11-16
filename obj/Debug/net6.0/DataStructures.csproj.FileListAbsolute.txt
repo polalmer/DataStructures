@@ -1,0 +1,15 @@
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/DataStructures
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/DataStructures.deps.json
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/DataStructures.runtimeconfig.json
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/DataStructures.dll
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/ref/DataStructures.dll
+/home/polalmer/CodingRepo/DataStructures/bin/Debug/net6.0/DataStructures.pdb
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.csproj.AssemblyReference.cache
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.GeneratedMSBuildEditorConfig.editorconfig
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.AssemblyInfoInputs.cache
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.AssemblyInfo.cs
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.csproj.CoreCompileInputs.cache
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.dll
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/ref/DataStructures.dll
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.pdb
+/home/polalmer/CodingRepo/DataStructures/obj/Debug/net6.0/DataStructures.genruntimeconfig.cache
