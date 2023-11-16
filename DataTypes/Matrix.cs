@@ -1,3 +1,5 @@
+using System.Security.AccessControl;
+
 namespace CustomTypes;
 
 public class Matrix
@@ -43,5 +45,18 @@ public class Matrix
                 data[x,y] = random.Next(maxValue);
             }
         }
+    }
+
+    public void PrintToConsole()
+    {
+        for(int y = 0; y < Size; y++)
+        {
+            for(int x = 0; x < Size; x++)
+            {  
+                Console.Write(" " + data[x,y] + " ");
+            }
+            Console.Write("\n");
+        }
+        Console.WriteLine();
     }
 }
