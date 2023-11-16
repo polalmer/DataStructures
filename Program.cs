@@ -8,4 +8,3 @@ two.FillRandom(10);
 
 
 Console.WriteLine("Hello, World!");
-
