@@ -4,11 +4,14 @@ TestMatrix();
 
 void TestMatrix()
 {
-    Matrix one = new(3);
+    Console.WriteLine("Matrix size:");
+    int size = int.Parse(Console.ReadLine());
+    
+    Matrix one = new(size);
     one.FillRandom(10);
     one.PrintToConsole();
 
-    Matrix two = new(3);
+    Matrix two = new(size);
     two.FillRandom(10);
     two.PrintToConsole();
 
