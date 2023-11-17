@@ -5,8 +5,8 @@ TestMatrix();
 void TestMatrix()
 {
     Console.WriteLine("Matrix size:");
-    int size = int.Parse(Console.ReadLine());
-    
+    int size = int.Parse(Console.ReadLine() ?? "3");
+
     Matrix one = new(size);
     one.FillRandom(10);
     one.PrintToConsole();

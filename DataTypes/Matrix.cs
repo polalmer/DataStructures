@@ -5,18 +5,21 @@ public class Matrix
     private int[,] data;
     private int Size;
 
+    //Constructor
     public Matrix(int size)
     {
         Size = size;
         data = new int[size, size];
     }
 
+    //Allows Syntax like Matrix[x,y] instad of Matrix.data[x,y]
     public int this[int row, int column]
     {
         get { return data[row, column]; }
         set { data[row, column] = value; }
     }
 
+    //Allows Syntax Matrix = Matrix + Matrix
     public static Matrix operator +(Matrix one, Matrix two)
     {
         if(one.Size != two.Size) throw new Exception("unequal matrixes");
