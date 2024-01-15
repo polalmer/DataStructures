@@ -105,7 +105,7 @@ public static class Terminplan
         foreach (Termin termin in Termine)
         {
             Console.WriteLine($"Termin {count}: AM {termin.Date.Day}/{termin.Date.month}/{termin.Date.year}"
-            + $" um {termin.Time.hour} {termin.Time.minute} {termin.Time.second}");
+            + $" um {termin.Time.hour}:{termin.Time.minute}:{termin.Time.second}");
             count++;
         }
     }
