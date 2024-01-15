@@ -9,7 +9,7 @@ public class Time
     /// <summary>
     ///  Null if unable to get Tiem
     /// </summary>
-    public static Time? GetTime(string input)
+    private static Time? GetTime(string input)
     {
         input = input.Replace(" ", string.Empty);
         string h = input[0..2];
@@ -28,5 +28,34 @@ public class Time
         if (time.minute > 59) return null;
         if (time.hour > 23) return null;
         return time;
+    }
+
+    public static Time GetUhrzeitFromUser()
+    {
+        Time? time;
+        while (true)
+        {
+            Console.WriteLine("Enter Uhrzeit (HH MM SS):");
+            string? input = Console.ReadLine();
+            if (input is null) continue;
+            if (input == "exit") continue;
+            time = Time.GetTime(input);
+            if (time is not null) return time;
+            Console.WriteLine("Fehler:");
+        }
+    }
+
+    /// <summary>
+    /// Null if same
+    /// </summary>
+    public static Time? GetLarger(Time one, Time two)
+    {
+        if (one.hour > two.hour) return one;
+        if (two.hour > one.hour) return two;
+        if (one.minute > two.minute) return one;
+        if (two.minute > one.minute) return two;
+        if (one.second > two.second) return one;
+        if (two.second > one.second) return two;
+        return null;
     }
 }

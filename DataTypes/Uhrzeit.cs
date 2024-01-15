@@ -6,7 +6,7 @@ public class Uhrzeit
 {
     public static void Function()
     {
-        Time div = CalcDiv(GetUhrzeitFromUser(), GetUhrzeitFromUser());
+        Time div = CalcDiv(Time.GetUhrzeitFromUser(), Time.GetUhrzeitFromUser());
         Console.WriteLine($"Diffrerenz:{div.hour} {div.minute} {div.second}");
     }
 
@@ -35,21 +35,6 @@ public class Uhrzeit
             div.hour = time1.hour - time2.hour;
         }
         return div;
-    }
-
-    private static Time GetUhrzeitFromUser()
-    {
-        Time? time;
-        while (true)
-        {
-            Console.WriteLine("Enter Uhrzeit (HH MM SS):");
-            string? input = Console.ReadLine();
-            if (input is null) continue;
-            if (input == "exit") continue;
-            time = Time.GetTime(input);
-            if (time is not null) return time;
-            Console.WriteLine("Fehler:");
-        }
     }
 }
 
