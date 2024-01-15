@@ -15,17 +15,15 @@ public class Uhrzeit
         Time div = new();
         if (time1.second < time2.second)
         {
-            time2.second -= time1.second;
-            time1.second = 60;
-            time2.minute++;
+            time1.second += 60;
+            time1.minute--;
         }
         div.second = time1.second - time2.second;
 
         if (time1.minute < time2.minute)
         {
-            time2.minute -= time1.minute;
-            time1.minute = 60;
-            time2.hour++;
+            time1.minute += 60;
+            time1.hour--;
         }
         div.minute = time1.minute - time2.minute;
         if (time1.hour < time2.hour)
