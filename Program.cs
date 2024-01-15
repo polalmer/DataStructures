@@ -1,3 +1,3 @@
 ﻿using CustomTypes;
 
-Uhrzeit.Function();
+//Uhrzeit.Function();
