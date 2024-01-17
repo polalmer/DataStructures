@@ -1,5 +1,3 @@
-using System.Runtime.ExceptionServices;
-
 namespace CustomTypes;
 
 public class Uhrzeit
@@ -13,27 +11,16 @@ public class Uhrzeit
     private static Time CalcDiv(Time time1, Time time2)
     {
         Time div = new();
-        if (time1.second < time2.second)
-        {
-            time1.second += 60;
-            time1.minute--;
-        }
-        div.second = time1.second - time2.second;
 
-        if (time1.minute < time2.minute)
-        {
-            time1.minute += 60;
-            time1.hour--;
-        }
-        div.minute = time1.minute - time2.minute;
-        if (time1.hour < time2.hour)
-        {
-            div.hour = time2.hour - time1.hour;
-        }
-        else
-        {
-            div.hour = time1.hour - time2.hour;
-        }
+        long time1InSeconds = time1.hour * 3600 + time1.minute * 60 + time1.second;
+        long time2InSeconds = time2.hour * 3600 + time2.minute * 60 + time2.second;
+
+        long diffInSeconds = Math.Abs(time1InSeconds - time2InSeconds);
+
+        div.hour = (uint)diffInSeconds / 3600;
+        div.minute = (uint)(diffInSeconds % 3600) / 60;
+        div.second = (uint)diffInSeconds % 60;
+
         return div;
     }
 }
