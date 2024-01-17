@@ -84,10 +84,8 @@ public class Bank(List<Konto> konten)
                 Console.WriteLine("Invalid number");
                 goto repeatGeld;
             }
-            if (Überweisen(logInKonto!, empfänger, amount) is false)
-            {
-                goto repeatEmpfänger;
-            }
+            if (Überweisen(logInKonto!, empfänger, amount) is true) return;
+            goto repeatEmpfänger;
         }
         catch
         {
