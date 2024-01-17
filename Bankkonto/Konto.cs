@@ -8,7 +8,7 @@ public class Konto(int kontonummer, int kundennummer, string inhaber)
     private float Betrag;
 
     /// <summary>
-    /// maximale Überziehgrenze
+    /// maximale Überziehgrenze positiv -> 100 beduetet der Betrag kann bis -100 gehen
     /// </summary>
     private float Dispo;
 
