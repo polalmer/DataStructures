@@ -18,15 +18,10 @@ public class Date
         string d = input[0..2];
         string m = input[2..4];
         string y = input[4..8];
-        if (int.TryParse(d, out _) is false) return null;
-        if (int.TryParse(m, out _) is false) return null;
-        if (int.TryParse(y, out _) is false) return null;
-        Date date = new()
-        {
-            Day = uint.Parse(d),
-            month = uint.Parse(m),
-            year = uint.Parse(y)
-        };
+        Date date = new();
+        if (uint.TryParse(d, out date.Day) is false) return null;
+        if (uint.TryParse(m, out date.month) is false) return null;
+        if (uint.TryParse(y, out date.year) is false) return null;
         if (date.Day > 31) return null;
         if (date.month > 12) return null;
         if (date.year > 9999) return null;

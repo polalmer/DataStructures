@@ -15,15 +15,10 @@ public class Time
         string h = input[0..2];
         string m = input[2..4];
         string s = input[4..6];
-        if (int.TryParse(h, out _) is false) return null;
-        if (int.TryParse(m, out _) is false) return null;
-        if (int.TryParse(s, out _) is false) return null;
-        Time time = new()
-        {
-            hour = uint.Parse(h),
-            minute = uint.Parse(m),
-            second = uint.Parse(s)
-        };
+        Time time = new();
+        if (uint.TryParse(h, out time.hour) is false) return null;
+        if (uint.TryParse(m, out time.minute) is false) return null;
+        if (uint.TryParse(s, out time.second) is false) return null;
         if (time.second > 59) return null;
         if (time.minute > 59) return null;
         if (time.hour > 23) return null;
@@ -39,7 +34,7 @@ public class Time
             string? input = Console.ReadLine();
             if (input is null) continue;
             if (input == "exit") continue;
-            time = Time.GetTime(input);
+            time = GetTime(input);
             if (time is not null) return time;
             Console.WriteLine("Fehler:");
         }
