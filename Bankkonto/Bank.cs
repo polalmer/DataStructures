@@ -1,29 +1,9 @@
-using System.Runtime.InteropServices;
-
 namespace Bankkonto;
 public class Bank(List<Konto> konten)
 {
     private readonly List<Konto> bankKonten = konten;
 
     private Konto? logInKonto = null;
-
-    public void Überweisung(Konto von, Konto nach, float betrag)
-    {
-        if (bankKonten.Contains(von) is false)
-        {
-            Console.WriteLine("Falsche Bank");
-            return;
-        }
-
-        float geldVon = von.Auszahlung(betrag);
-        if (geldVon == betrag)
-        {
-            nach.Einzahlung(geldVon);
-            Console.WriteLine("Überweisung erflogreich");
-            return;
-        }
-        Console.WriteLine("Unzureichende Kontodeckung");
-    }
 
     public void BankApp()
     {
@@ -51,8 +31,64 @@ public class Bank(List<Konto> konten)
                 if (input == "setDispo") SetDispo();
                 if (input == "einzahlen") Einzahlen();
                 if (input == "abheben") Abheben();
+                if (input == "überweisung") ÜberweisungsScreen();
                 if (input == "logout") logInKonto = null;
             }
+        }
+    }
+
+    public void Überweisen(Konto von, Konto nach, float betrag)
+    {
+        if (bankKonten.Contains(von) is false)
+        {
+            Console.WriteLine("Falsche Bank");
+            return;
+        }
+
+        float geldVon = von.Auszahlung(betrag);
+        if (geldVon == betrag)
+        {
+            nach.Einzahlung(geldVon);
+            Console.WriteLine("Überweisung erflogreich");
+            return;
+        }
+        Console.WriteLine("Unzureichende Kontodeckung");
+    }
+
+    private void ÜberweisungsScreen()
+    {
+        Console.WriteLine("\nÜberweisungsterminal ([list] to show Konten, [exit])");
+    repeatEmpfänger:
+        Console.Write("An welches Konto wird überwiesen:");
+        string? input = Console.ReadLine();
+        if (input is null || input == "exit") return;
+        if (input == "list")
+        {
+            ListKonten();
+            goto repeatEmpfänger;
+        }
+        if (int.TryParse(input, out int empfängerNr) is false)
+        {
+            Console.WriteLine("Invalid input");
+            goto repeatEmpfänger;
+        }
+        try
+        {
+            Konto empfänger = bankKonten[empfängerNr];
+        repeatGeld:
+            Console.Write("Wie viel soll überwiesen werden?");
+            string? amountString = Console.ReadLine();
+            if (float.TryParse(amountString, out float amount) is false)
+            {
+                Console.WriteLine("Invalid number");
+                goto repeatGeld;
+            }
+            Überweisen(logInKonto!, empfänger, amount);
+        }
+        catch
+        {
+            Console.WriteLine("Empfänger not found");
+            goto repeatEmpfänger;
         }
     }
 
