@@ -2,7 +2,7 @@ namespace CustomTypes;
 
 public static class Terminplan
 {
-    private static List<Termin> Termine = [];
+    private static readonly List<Termin> Termine = [];
 
     public static void Function()
     {
@@ -112,8 +112,8 @@ public static class Terminplan
 }
 
 
-public class Termin(Time time, Date dateOnly)
+public class Termin(Time time, Date date)
 {
-    public Date Date { get; private set; } = dateOnly;
+    public Date Date { get; private set; } = date;
     public Time Time { get; private set; } = time;
 }

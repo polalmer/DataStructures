@@ -1,4 +1,4 @@
 ﻿using CustomTypes;
 
-//Uhrzeit.Function();
-Terminplan.Function();
+Uhrzeit.Function();
+//Terminplan.Function();
