@@ -17,10 +17,7 @@ public class Konto(int kontonummer, int kundennummer, string inhaber)
         Dispo = dispo_betrag;
     }
 
-    public float Get_Betrag()
-    {
-        return Betrag;
-    }
+    public float Get_Betrag() => Betrag;
 
     public float Einzahlung(float betrag)
     {

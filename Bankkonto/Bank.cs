@@ -79,6 +79,7 @@ public class Bank(List<Konto> konten)
         repeatGeld:
             Console.Write("Wie viel soll überwiesen werden?");
             string? amountString = Console.ReadLine();
+            if (amountString is null || amountString == "exit") return;
             if (float.TryParse(amountString, out float amount) is false)
             {
                 Console.WriteLine("Invalid number");
