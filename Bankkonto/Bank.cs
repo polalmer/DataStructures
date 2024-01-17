@@ -24,25 +24,25 @@ public class Bank(List<Konto> konten)
             {
                 Console.WriteLine("Eingelogged als:");
                 logInKonto.Auszug();
-                Console.WriteLine("[setDispo]\n[auszug]\n[einzahlen]\n[abheben]\n[überweisung]\n[logout]");
+                Console.WriteLine("[setDispo]\n[auszug]\n[einzahlen]\n[abheben]\n[transfer] Überweisung\n[logout]");
                 string? input = Console.ReadLine();
                 if (input is null) continue;
                 if (input == "auszug") logInKonto.Auszug();
                 if (input == "setDispo") SetDispo();
                 if (input == "einzahlen") Einzahlen();
                 if (input == "abheben") Abheben();
-                if (input == "überweisung") ÜberweisungsScreen();
+                if (input == "transfer") ÜberweisungsScreen();
                 if (input == "logout") logInKonto = null;
             }
         }
     }
 
-    public void Überweisen(Konto von, Konto nach, float betrag)
+    public bool Überweisen(Konto von, Konto nach, float betrag)
     {
         if (bankKonten.Contains(von) is false)
         {
             Console.WriteLine("Falsche Bank");
-            return;
+            return false;
         }
 
         float geldVon = von.Auszahlung(betrag);
@@ -50,9 +50,10 @@ public class Bank(List<Konto> konten)
         {
             nach.Einzahlung(geldVon);
             Console.WriteLine("Überweisung erflogreich");
-            return;
+            return true; ;
         }
         Console.WriteLine("Unzureichende Kontodeckung");
+        return false;
     }
 
     private void ÜberweisungsScreen()
@@ -83,7 +84,10 @@ public class Bank(List<Konto> konten)
                 Console.WriteLine("Invalid number");
                 goto repeatGeld;
             }
-            Überweisen(logInKonto!, empfänger, amount);
+            if (Überweisen(logInKonto!, empfänger, amount) is false)
+            {
+                goto repeatEmpfänger;
+            }
         }
         catch
         {
@@ -95,7 +99,7 @@ public class Bank(List<Konto> konten)
     private void Abheben()
     {
     repeatAbheben:
-        Console.Write("Einzuzahlender Betrag?");
+        Console.Write("Abzuhebender Betrag?");
         string? input = Console.ReadLine();
         if (input == "exit") return;
         if (float.TryParse(input, out float subAmmount) is false)

@@ -40,7 +40,6 @@ public class Konto(int kontonummer, int kundennummer, string inhaber)
 
     public void Auszug()
     {
-        Console.WriteLine("-----------------------------");
         Console.WriteLine($"Inhaber: {Inhaber}");
         Console.WriteLine($"Betrag:{Betrag}");
         Console.WriteLine($"Dispo: {Dispo}");
