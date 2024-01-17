@@ -34,12 +34,16 @@ public class Konto(int kontonummer, int kundennummer, string inhaber)
             Betrag -= betrag;
             return betrag;
         }
+        Console.WriteLine("nicht genug Geld!");
         return 0;
     }
 
     public void Auszug()
     {
+        Console.WriteLine("-----------------------------");
+        Console.WriteLine($"Inhaber: {Inhaber}");
         Console.WriteLine($"Betrag:{Betrag}");
         Console.WriteLine($"Dispo: {Dispo}");
+        Console.WriteLine("-----------------------------");
     }
 }
